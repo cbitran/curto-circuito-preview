@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Curto-Circuito · prévia WebGL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.2L9 22l10-12.2h-6.4Z" fill="currentColor"/></symbol>
+    <symbol id="i-gira-esq" viewBox="0 0 24 24"><path d="M5.5 9.5A7.5 7.5 0 1 1 6 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.5 5.5 5.6 10 10 7.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gira-dir" viewBox="0 0 24 24"><path d="M18.5 9.5A7.5 7.5 0 1 0 18 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M21.5 5.5 18.4 10 14 7.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <canvas id="scene" aria-label="Arena 3D do Curto-Circuito"></canvas>
+
+  <div class="hud" id="hudTop" aria-live="polite">
+    <span class="hud-pill" id="roundLabelPill">Rodada <span id="roundLabel">1/5</span></span>
+    <ol class="roster" aria-label="Robôs da casa">
+      <li data-enemy="rubi" title="Rubi" style="--bot:#ff4d5e"><i></i><span>Rubi</span></li>
+      <li data-enemy="lima" title="Lima" style="--bot:#a6f04a"><i></i><span>Lima</span></li>
+      <li data-enemy="ambar" title="Âmbar" style="--bot:#ffb02e"><i></i><span>Âmbar</span></li>
+      <li data-enemy="violeta" title="Violeta" style="--bot:#b57bff"><i></i><span>Violeta</span></li>
+    </ol>
+  </div>
+
+  <aside class="panel" id="panel" aria-label="Painel do jogo">
+    <header class="brand">
+      <svg class="brand-mark" aria-hidden="true"><use href="#i-raio"></use></svg>
+      <div>
+        <h1>Curto-Circuito</h1>
+        <p>Mire no escuro, sobreviva aos lasers</p>
+      </div>
+    </header>
+
+    <div class="wallet">
+      <span class="wallet-label">Saldo</span>
+      <strong id="balance" class="wallet-value">R$&nbsp;1.000,00</strong>
+    </div>
+
+    <section class="block series">
+      <div class="block-head">
+        <h2>Valor da série</h2>
+        <span class="block-note">teto 1.000x</span>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-v="1" style="--chip:#22d3ee" aria-pressed="false"><span>R$ 1</span></button>
+        <button type="button" class="chip" data-v="2" style="--chip:#a3e635" aria-pressed="false"><span>R$ 2</span></button>
+        <button type="button" class="chip" data-v="5" style="--chip:#f472b6" aria-pressed="true"><span>R$ 5</span></button>
+        <button type="button" class="chip" data-v="10" style="--chip:#fbbf24" aria-pressed="false"><span>R$ 10</span></button>
+      </div>
+    </section>
+
+    <section class="quote" aria-live="polite">
+      <div class="quote-head">
+        <span id="roundTitle">Rodada 1 de 5</span>
+        <span id="quoteBots">4 robôs da casa</span>
+      </div>
+      <div class="quote-main">
+        <div class="q-survive">
+          <span class="q-label">Sobreviver</span>
+          <strong id="qMult">×1,37</strong>
+          <span class="q-chance">63% de chance</span>
+        </div>
+        <div class="q-arrow" aria-hidden="true">→</div>
+        <div class="q-pot">
+          <span class="q-label">Pote vai a</span>
+          <strong id="qPot">R$&nbsp;6,85</strong>
+          <span class="q-sub">1,37x</span>
+        </div>
+      </div>
+      <p class="quote-kill"><b>cada abate +0,60x do pote</b> <span id="qKill">+R$&nbsp;3,00</span></p>
+    </section>
+
+    <p id="hint" class="hint-line">Toque numa casa para ir · arraste para mirar</p>
+
+    <div class="actions">
+      <div class="aim-row">
+        <button id="rotLeft" class="rot" type="button" aria-label="Girar a mira para a esquerda"><svg aria-hidden="true"><use href="#i-gira-esq"></use></svg></button>
+        <button id="lock" class="cta" type="button"><span id="lockLabel">Travar · R$&nbsp;5</span></button>
+        <button id="rotRight" class="rot" type="button" aria-label="Girar a mira para a direita"><svg aria-hidden="true"><use href="#i-gira-dir"></use></svg></button>
+      </div>
+    </div>
+
+    <p class="match-status" id="matchStatus" role="status" aria-live="polite"></p>
+
+    <details class="fair">
+      <summary>Regras e jogo justo</summary>
+      <p class="hint">Cinco robôs numa arena em octógono: o seu e <b>4 da casa</b>. A cada rodada você escolhe uma casa da arena e para onde o seu laser mira (16 direções), <b>sem ver os outros</b>. Ao travar, os robôs da casa aparecem e todos atiram ao mesmo tempo, em linha reta, até a grade. Quem fica no caminho de um laser entra em curto-circuito e sai. Robô atingido não volta. Depois de cada rodada o anel de fora despenca e a arena encolhe; são 5 rodadas, a última no octógono do centro.</p>
+      <p class="hint">Nesta prévia, as casas e direções dos robôs da casa são sorteadas só no navegador, para visualizar. No jogo, quem decide é o servidor. Os valores do painel são ilustrativos: nada é apostado nem pago.</p>
+    </details>
+
+    <!-- Ferramentas de revisão (Codex): ocultas; aparecem só com ?revisao=1 -->
+    <section class="review-tools" id="reviewTools" hidden>
+      <div class="seg seg-state" id="stateSeg" role="radiogroup" aria-label="Estado visual de revisão">
+        <button role="radio" aria-checked="false" data-state="inspecao">Inspeção</button>
+        <button role="radio" aria-checked="true" data-state="posicionamento" class="on">Posição</button>
+        <button role="radio" aria-checked="false" data-state="revelacao">Revelação</button>
+        <button role="radio" aria-checked="false" data-state="disparo">Disparo</button>
+      </div>
+      <p class="note" id="stateHint"></p>
+      <p class="note" id="phaseStatus"></p>
+      <div class="toggles">
+        <button class="tgl" id="btnDrop">Derrubar</button>
+        <button class="tgl" id="btnReset">Reiniciar</button>
+        <button class="tgl on" id="tglLasers" aria-pressed="true">Varredura</button>
+        <button class="tgl" id="tglCrowd" aria-pressed="false">Torcida</button>
+        <button class="tgl" id="tglQuality" aria-pressed="false">Leve</button>
+        <button class="tgl" id="tglStats" aria-pressed="false">Métricas</button>
+        <button class="tgl" id="btnReloadEnemies">Recarregar</button>
+      </div>
+      <input id="audioVolume" aria-label="Volume geral" type="range" min="0" max="100" value="50" hidden>
+    </section>
+
+    <footer class="panel-foot">
+      <button id="tglSound" class="link" type="button">Som: ligado</button>
+      <span>Protótipo · dinheiro fictício · +18</span>
+    </footer>
+  </aside>
+
+  <div class="stats" id="stats" hidden></div>
+  <section id="benchmark" class="benchmark" hidden aria-label="Medição de desempenho"><button id="btnBenchmark">Medir por 30 segundos</button><pre id="benchmarkResult" aria-live="polite"></pre></section>
+  <div class="loading" id="loading">Carregando arena…</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

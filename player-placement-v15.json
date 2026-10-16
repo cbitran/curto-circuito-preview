@@ -1,0 +1,40 @@
+{
+  "source_scene": "curto-circuito-referencia-v15.blend",
+  "asset": "robo-laranja-game-v3.glb",
+  "instructions": "Apply matrix to loaded gltf.scene WITHOUT zeroing child transforms, additional scale or ground normalization. Column-major Three.js Matrix4.fromArray. Native child transform must remain intact.",
+  "matrix_column_major": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0126533508300781,
+    0.003933096304535866,
+    1.0126302242279053,
+    1.0
+  ],
+  "blender_world_bounds": {
+    "min": [
+      0.38755297660827637,
+      -1.619389533996582,
+      0.003996068611741066
+    ],
+    "max": [
+      1.6376198530197144,
+      -0.4057832956314087,
+      1.0797734260559082
+    ]
+  },
+  "three_world_center": [
+    1.0125864148139954,
+    0.5418847473338246,
+    1.0125864148139954
+  ]
+}

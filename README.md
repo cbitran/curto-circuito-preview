@@ -1,5 +1,5 @@
-# Curto-Circuito · Prévia
+# Curto-Circuito · prévia compartilhável
 
-Prévia visual compartilhável do jogo Curto-Circuito. Protótipo demonstrativo; valores ilustrativos, sem apostas ou pagamentos.
+Prévia visual do jogo Curto-Circuito, publicada para revisão e compartilhamento. Abra [`web-preview/`](web-preview/) para entrar na arena.
 
-A publicação do GitHub Pages será ativada pela automação do repositório.
+Este protótipo é demonstrativo: valores fictícios, sem aposta ou pagamento. Os assets 3D e de áudio são servidos como arquivos estáticos; Three.js é carregado da CDN jsDelivr.

@@ -1,0 +1,126 @@
+{
+  "bays": [
+    {
+      "id": 0,
+      "phase": 2,
+      "cell_index": 0,
+      "position_three": [
+        3.2335784435272217,
+        0,
+        -0.0
+      ],
+      "root": "LAUNCH_BAY_0",
+      "left": "Bay 0 | HATCH_DOOR_LEFT",
+      "right": "Bay 0 | HATCH_DOOR_RIGHT",
+      "lift": "Bay 0 | ELEVATOR",
+      "yaw_three": -0.0,
+      "robot_yaw_three": -0.0,
+      "quaternion_three": [
+        0,
+        -0.0,
+        0,
+        1.0
+      ]
+    },
+    {
+      "id": 1,
+      "phase": 2,
+      "cell_index": 2,
+      "position_three": [
+        0.0,
+        0,
+        -3.2335784435272217
+      ],
+      "root": "LAUNCH_BAY_1",
+      "left": "Bay 1 | HATCH_DOOR_LEFT",
+      "right": "Bay 1 | HATCH_DOOR_RIGHT",
+      "lift": "Bay 1 | ELEVATOR",
+      "yaw_three": -1.5707963267948966,
+      "robot_yaw_three": -1.5707963267948966,
+      "quaternion_three": [
+        0,
+        -0.7071067811865475,
+        0,
+        0.7071067811865476
+      ]
+    },
+    {
+      "id": 2,
+      "phase": 2,
+      "cell_index": 4,
+      "position_three": [
+        -3.2335784435272217,
+        0,
+        -0.0
+      ],
+      "root": "LAUNCH_BAY_2",
+      "left": "Bay 2 | HATCH_DOOR_LEFT",
+      "right": "Bay 2 | HATCH_DOOR_RIGHT",
+      "lift": "Bay 2 | ELEVATOR",
+      "yaw_three": -0.0,
+      "robot_yaw_three": -0.0,
+      "quaternion_three": [
+        0,
+        -0.0,
+        0,
+        1.0
+      ]
+    },
+    {
+      "id": 3,
+      "phase": 2,
+      "cell_index": 6,
+      "position_three": [
+        0.0,
+        0,
+        3.2335784435272217
+      ],
+      "root": "LAUNCH_BAY_3",
+      "left": "Bay 3 | HATCH_DOOR_LEFT",
+      "right": "Bay 3 | HATCH_DOOR_RIGHT",
+      "lift": "Bay 3 | ELEVATOR",
+      "yaw_three": -1.5707963267948966,
+      "robot_yaw_three": -1.5707963267948966,
+      "quaternion_three": [
+        0,
+        -0.7071067811865475,
+        0,
+        0.7071067811865476
+      ]
+    }
+  ],
+  "aperture_radii_radial_tangential": [
+    0.78,
+    1.02
+  ],
+  "lift_radii_radial_tangential": [
+    0.74,
+    0.96
+  ],
+  "robot_rotation_rule": "Keep robot yaw_three fixed while below floor; rotate only after body fully clears opening",
+  "clear_width": 1.4412520707176073,
+  "phase": 2,
+  "units": "arena world units, never scale by cell marker radius",
+  "sequence": "Only initial emergence: open doors, lift robot, drive robot to gameplay destination, retract lift, close doors. Survivors remain in place between rounds.",
+  "doors_three": {
+    "closed_y": 0.018,
+    "lowered_y": -0.16,
+    "left_open_x": -0.9,
+    "right_open_x": 0.9
+  },
+  "lift_three": {
+    "bottom_y": -2.8,
+    "top_y": -0.045
+  },
+  "matching_arena": "curto-circuito-arena-game-v11.glb",
+  "timeline": {
+    "closed": 1,
+    "lowered": 12,
+    "open": 38,
+    "lift_up": 70,
+    "retract_start": 100,
+    "lift_down": 128,
+    "doors_retracted": 156,
+    "closed_again": 168
+  }
+}

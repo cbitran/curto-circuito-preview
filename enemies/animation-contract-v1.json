@@ -1,0 +1,138 @@
+{
+  "rubi": {
+    "asset": "enemies/rubi.glb",
+    "root": "RUBI_ROOT",
+    "front_axis": "+Z",
+    "up_axis": "+Y",
+    "emitter_node": "Laser emitter",
+    "emitter_local_position": [
+      0,
+      0.699999988079071,
+      0.38999998569488525
+    ],
+    "emitter_note": "Use node world matrix after applying root transforms/ground offset; point is lens center, offset start toward +Z beyond lens surface.",
+    "independent_parts": [
+      "Antenna beacon",
+      "Antenna socket",
+      "Antenna stem",
+      "Drive chassis",
+      "Face inset",
+      "Friendly optic",
+      "Friendly optic.001",
+      "Head yaw pivot",
+      "Laser emitter",
+      "Rubi head",
+      "Track belt",
+      "Track belt.001",
+      "Track wheel",
+      "Track wheel.001",
+      "Track wheel.002",
+      "Track wheel.003",
+      "Track wheel.004",
+      "Track wheel.005",
+      "Tread shoe",
+      "Tread shoe.001",
+      "Tread shoe.002",
+      "Tread shoe.003",
+      "Tread shoe.004",
+      "Tread shoe.005",
+      "Tread shoe.006",
+      "Tread shoe.007",
+      "Tread shoe.008",
+      "Tread shoe.009"
+    ],
+    "animation_clips": 0,
+    "rotation_rule": "Rotate whole model root for aim. Head yaw pivot is not a parent hierarchy; independent head aim needs reparenting with world transforms preserved."
+  },
+  "lima": {
+    "asset": "enemies/lima.glb",
+    "root": "LIMA_ROOT",
+    "front_axis": "+Z",
+    "up_axis": "+Y",
+    "emitter_node": "Optic luminous lens",
+    "emitter_local_position": [
+      0,
+      0.6800000071525574,
+      0.574999988079071
+    ],
+    "emitter_note": "Use node world matrix after applying root transforms/ground offset; point is lens center, offset start toward +Z beyond lens surface.",
+    "independent_parts": [
+      "Antenna beacon.001",
+      "Antenna beacon.002",
+      "Antenna socket.001",
+      "Antenna socket.002",
+      "Antenna stem.001",
+      "Antenna stem.002",
+      "Drive base",
+      "Drive roller",
+      "Drive roller.001",
+      "Equatorial metal seam",
+      "Lima sphere",
+      "Optic bezel",
+      "Optic glass",
+      "Optic luminous lens"
+    ],
+    "animation_clips": 0,
+    "rotation_rule": "Rotate model root for aim; avoid rotating lens alone."
+  },
+  "ambar": {
+    "asset": "enemies/ambar.glb",
+    "root": "AMBAR_ROOT",
+    "front_axis": "+Z",
+    "up_axis": "+Y",
+    "emitter_node": "Optic luminous lens.001",
+    "emitter_local_position": [
+      0,
+      0.8299999833106995,
+      0.5
+    ],
+    "emitter_note": "Use node world matrix after applying root transforms/ground offset; point is lens center, offset start toward +Z beyond lens surface.",
+    "independent_parts": [
+      "Ambar tower",
+      "Antenna beacon.003",
+      "Antenna socket.003",
+      "Antenna stem.003",
+      "Crown cap",
+      "Dark gasket",
+      "Dark gasket.001",
+      "Drive rubber",
+      "Front service panel",
+      "Lower armor",
+      "Optic bezel.001",
+      "Optic glass.001",
+      "Optic luminous lens.001"
+    ],
+    "animation_clips": 0,
+    "rotation_rule": "Rotate model root for aim; avoid rotating lens alone."
+  },
+  "violeta": {
+    "asset": "enemies/violeta.glb",
+    "root": "VIOLETA_ROOT",
+    "front_axis": "+Z",
+    "up_axis": "+Y",
+    "emitter_node": "Optic luminous lens.002",
+    "emitter_local_position": [
+      0,
+      0.800000011920929,
+      0.44999998807907104
+    ],
+    "emitter_note": "Use node world matrix after applying root transforms/ground offset; point is lens center, offset start toward +Z beyond lens surface.",
+    "independent_parts": [
+      "Cone crown",
+      "Crown seam",
+      "Optic bezel.002",
+      "Optic glass.002",
+      "Optic luminous lens.002",
+      "Propulsion glow",
+      "Shoulder gasket",
+      "Side engine",
+      "Side engine.001",
+      "Side nozzle",
+      "Side nozzle.001",
+      "Thruster nozzle",
+      "Violeta body"
+    ],
+    "animation_clips": 0,
+    "rotation_rule": "Rotate model root for aim; avoid rotating lens alone."
+  }
+}
